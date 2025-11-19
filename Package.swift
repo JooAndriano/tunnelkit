@@ -48,8 +48,8 @@ let package = Package(
         ),
         // WireGuard Apple – pakai versi yang manifest-nya kompatibel dengan SPM/Xcode
         .package(
-            url: "https://git.zx2c4.com/wireguard-apple",
-            .exact("1.0.15-26")
+            url: "https://github.com/JooAndriano/wireguard-apple.git",
+            branch: "master"
         )
         // Alternatif kalau nanti mau pakai local path:
         // .package(name: "wireguard-apple", path: "../wireguard-apple")
