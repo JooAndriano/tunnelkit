@@ -1,6 +1,4 @@
 // swift-tools-version: 5.9
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
@@ -37,7 +35,6 @@ let package = Package(
         )
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
         .package(
             url: "https://github.com/SwiftyBeaver/SwiftyBeaver",
             from: "1.9.0"
@@ -46,13 +43,10 @@ let package = Package(
             url: "https://github.com/passepartoutvpn/openssl-apple",
             from: "3.2.105"
         ),
-        // WireGuard Apple – pakai versi yang manifest-nya kompatibel dengan SPM/Xcode
         .package(
             url: "https://github.com/JooAndriano/wireguard-apple.git",
             branch: "master"
         )
-        // Alternatif kalau nanti mau pakai local path:
-        // .package(name: "wireguard-apple", path: "../wireguard-apple")
     ],
     targets: [
         .target(
@@ -181,7 +175,8 @@ let package = Package(
             dependencies: [
                 "CTunnelKitCore",
                 "CTunnelKitOpenVPNCore",
-                "openssl-apple"
+                // ⬇⬇ satu-satunya yang perlu dirapikan
+                .product(name: "openssl-apple", package: "openssl-apple")
             ]
         ),
         .target(
